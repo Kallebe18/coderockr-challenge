@@ -7,6 +7,11 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Rubik';
   }
+
+  #root {
+    min-height: 100vh;
+    background-image: linear-gradient(90deg, #F1A10A, #342303)
+  }
 `;
 
 export default GlobalStyles;
