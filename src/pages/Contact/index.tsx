@@ -1,9 +1,9 @@
 import { DefaultLayout } from "../../Layouts/Default";
 
-export function HomePage() {
+export function ContactPage() {
   return (
     <DefaultLayout>
-      <h1>Welcome</h1>
+      <h1>Contato</h1>
     </DefaultLayout>
   );
 }
