@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 import { DefaultLayout } from "../../Layouts/Default";
 import { api } from "../../services/api";
@@ -8,15 +8,13 @@ import { PostsContainer } from "./styles";
 
 export function PostsPage() {
   const [posts, setPosts] = useState<PostType[]>([]);
-  const [
-    page,
-    // setPage
-  ] = useState(0);
+  const [page, setPage] = useState(-1);
   const [
     limit,
     // setLimit
-  ] = useState(10);
+  ] = useState(11);
   const [loading, setLoading] = useState(false);
+  const loaderRef = useRef(null);
 
   const loadPosts = useCallback(async () => {
     try {
@@ -27,12 +25,17 @@ export function PostsPage() {
           _limit: limit,
         },
       });
-      setPosts(
-        data.map((d) => ({
+
+      if (!data.length) return;
+
+      setPosts((currentPosts) => [
+        ...currentPosts,
+        ...data.map((d) => ({
           ...d,
+          imageUrl: d.imageUrl + `&dummy=${(Math.random() * 20).toString()}`,
           article: d.article.replace(/<\/?[^>]+(>|$)/g, ""),
-        }))
-      );
+        })),
+      ]);
     } catch (error) {
       alert("Erro ao consultar posts, tente novamente mais tarde.");
     } finally {
@@ -41,18 +44,39 @@ export function PostsPage() {
   }, [setLoading, limit, page]);
 
   useEffect(() => {
-    loadPosts();
-  }, [loadPosts]);
+    if (page >= 0) {
+      loadPosts();
+    }
+  }, [loadPosts, page]);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "40px",
+      threshold: 0.9,
+    };
+
+    const observer = new IntersectionObserver((entities) => {
+      const target = entities[0];
+
+      if (target.isIntersecting) {
+        setPage((previousPage) => previousPage + 1);
+      }
+    }, options);
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+  }, []);
 
   return (
     <DefaultLayout>
       <PostsContainer>
         {posts.map((post, index) => (
-          <Post key={post.id} post={post} />
+          <Post key={index} post={post} />
         ))}
       </PostsContainer>
-
-      {loading ? <p>Carregando</p> : <></>}
+      <p ref={loaderRef}>{loading && "Carregando posts..."}</p>
     </DefaultLayout>
   );
 }

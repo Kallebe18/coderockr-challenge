@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ContactPage } from "./pages/Contact";
+import { PostPage } from "./pages/Post";
 import { PostsPage } from "./pages/Posts";
 
 export function AppRoutes() {
@@ -8,7 +8,7 @@ export function AppRoutes() {
       <Routes>
         <Route path="/">
           <Route index element={<PostsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/post" element={<PostPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
