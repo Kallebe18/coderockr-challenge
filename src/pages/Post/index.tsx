@@ -3,11 +3,11 @@ import { Navigate } from "react-router-dom";
 
 import { DefaultLayout } from "../../Layouts/Default";
 import {
-  PostArticle,
   PostBody,
   PostContainer,
   PostHeader,
   PostHeaderInfo,
+  PostImage,
   PostTitle,
 } from "./styles";
 import { usePost } from "../../hooks/usePost";
@@ -22,7 +22,7 @@ export function PostPage() {
     <DefaultLayout>
       <PostContainer>
         <PostHeader>
-          <img src={imageUrl} alt={title} height={300} />
+          <PostImage src={imageUrl} alt={title} />
           <PostHeaderInfo>
             <p>{format(new Date(date), "PP")}</p>
             <p>{author}</p>
@@ -30,7 +30,7 @@ export function PostPage() {
           </PostHeaderInfo>
         </PostHeader>
         <PostBody>
-          <PostArticle>{article}</PostArticle>
+          <p>{article}</p>
         </PostBody>
       </PostContainer>
     </DefaultLayout>
