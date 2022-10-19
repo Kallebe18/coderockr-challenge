@@ -40,13 +40,7 @@ export function PostsPage() {
         ...data.map((d) => ({
           ...d,
           // this was made to add randomness to images
-          imageUrl:
-            d.imageUrl +
-            `&${(Math.random() * 20000).toFixed(0).toString()}=${(
-              Math.random() * 20000
-            )
-              .toFixed(0)
-              .toString()}`,
+          imageUrl: d.imageUrl,
           article: d.article.replace(/<\/?[^>]+(>|$)/g, ""),
         })),
       ]);
