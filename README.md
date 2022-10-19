@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Live demo: https://kallebe-coderockr.netlify.app
+
 ## Main third party libraries used in this project:
 
 - react
