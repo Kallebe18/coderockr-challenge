@@ -15,11 +15,12 @@ const PostButtonContainer = styled.button`
 
 type PostButtonProps = {
   onClick: () => void;
+  ariaLabel: string;
 };
 
-export function PostButton({ onClick }: PostButtonProps) {
+export function PostButton({ onClick, ariaLabel }: PostButtonProps) {
   return (
-    <PostButtonContainer onClick={onClick}>
+    <PostButtonContainer onClick={onClick} aria-label={ariaLabel}>
       <svg
         width="20"
         height="12"

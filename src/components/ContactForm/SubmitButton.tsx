@@ -20,11 +20,12 @@ const SubmitButtonContainer = styled.button`
 
 type SubmitButtonProps = {
   type: "button" | "submit" | "reset" | undefined;
+  ariaLabel: string;
 };
 
-export function SubmitButton({ type }: SubmitButtonProps) {
+export function SubmitButton({ type, ariaLabel }: SubmitButtonProps) {
   return (
-    <SubmitButtonContainer type={type}>
+    <SubmitButtonContainer type={type} aria-label={ariaLabel}>
       <svg
         width="15"
         height="12"

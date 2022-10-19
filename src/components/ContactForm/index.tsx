@@ -48,7 +48,7 @@ export function ContactForm({ open, onClose }: ContactFormProps) {
   return (
     <ContactFormContainer>
       <ContactFormModal ref={modalRef}>
-        <CloseButton onClose={onClose} />
+        <CloseButton onClose={onClose} ariaLabel="Close contact form" />
         <ContactTitle>Contact</ContactTitle>
         <CustomForm>
           <LabelContainer>
@@ -67,7 +67,7 @@ export function ContactForm({ open, onClose }: ContactFormProps) {
             <CustomInputLabel>Post</CustomInputLabel>
             <CustomTextArea placeholder="Hello..." rows={6} />
           </LabelContainer>
-          <SubmitButton type="submit" />
+          <SubmitButton type="submit" ariaLabel="Submit contact form" />
         </CustomForm>
       </ContactFormModal>
     </ContactFormContainer>

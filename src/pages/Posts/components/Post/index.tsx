@@ -43,6 +43,7 @@ export function Post({ post }: PostProps) {
           </DesktopWrapper>
           <PostArticle>{article}</PostArticle>
           <PostButton
+            ariaLabel={`know more about ${article}`}
             onClick={() => {
               setSelectedPost(post);
             }}

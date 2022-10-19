@@ -15,11 +15,12 @@ const SubmitButtonContainer = styled.button`
 
 type CloseButtonProps = {
   onClose: () => void;
+  ariaLabel: string;
 };
 
-export function CloseButton({ onClose }: CloseButtonProps) {
+export function CloseButton({ onClose, ariaLabel }: CloseButtonProps) {
   return (
-    <SubmitButtonContainer onClick={onClose}>
+    <SubmitButtonContainer onClick={onClose} aria-label={ariaLabel}>
       <svg
         width="18"
         height="18"
