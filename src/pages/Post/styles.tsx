@@ -34,6 +34,10 @@ export const PostBody = styled.div`
   padding: 50px;
 `;
 
+export const PostDate = styled.p`
+  font-size: 0.8rem;
+`;
+
 export const PostTitle = styled.h1`
   color: #f1a10a;
 `;

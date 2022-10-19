@@ -5,6 +5,7 @@ import { DefaultLayout } from "../../Layouts/Default";
 import {
   PostBody,
   PostContainer,
+  PostDate,
   PostHeader,
   PostHeaderInfo,
   PostImage,
@@ -24,7 +25,7 @@ export function PostPage() {
         <PostHeader>
           <PostImage src={imageUrl} alt={title} />
           <PostHeaderInfo>
-            <p>{format(new Date(date), "PP")}</p>
+            <PostDate>{format(new Date(date), "PP")}</PostDate>
             <p>{author}</p>
             <PostTitle>{title}</PostTitle>
           </PostHeaderInfo>
