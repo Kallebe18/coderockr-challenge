@@ -16,35 +16,43 @@ export function Header() {
   const navigate = useNavigate();
 
   return (
-    <HeaderContainer>
-      <HeaderTitle>Rockr Blog</HeaderTitle>
-      <HeaderOptionsContainer>
-        <HeaderOption
-          href="#"
+    <>
+      <HeaderContainer>
+        <HeaderTitle
           onClick={(e) => {
-            e.preventDefault();
-            setSelectedPost(null);
             navigate("/");
           }}
         >
-          Posts
-        </HeaderOption>
-        <HeaderOption
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            setContactOpen(true);
-          }}
-        >
-          Contact
-        </HeaderOption>
-      </HeaderOptionsContainer>
+          Rockr Blog
+        </HeaderTitle>
+        <HeaderOptionsContainer>
+          <HeaderOption
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setSelectedPost(null);
+              navigate("/");
+            }}
+          >
+            Posts
+          </HeaderOption>
+          <HeaderOption
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setContactOpen(true);
+            }}
+          >
+            Contact
+          </HeaderOption>
+        </HeaderOptionsContainer>
+      </HeaderContainer>
       <ContactForm
         open={contactOpen}
         onClose={() => {
           setContactOpen(false);
         }}
       />
-    </HeaderContainer>
+    </>
   );
 }
