@@ -1,26 +1,16 @@
 import { useRef, useEffect } from "react";
-import { ContactFormContainer, ContactFormModal, ContactTitle } from "./styles";
-import styled from "styled-components";
-
-const CustomForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-`;
-
-const CustomInput = styled.input`
-  height: 40px;
-  padding: 0px 15px;
-  width: 100%;
-  border-radius: 4px;
-`;
-
-const CustomInputLabel = styled.p`
-  font-weight: bold;
-  color: #000;
-`;
+import { CloseButton } from "./CloseButton";
+import {
+  ContactFormContainer,
+  ContactFormModal,
+  ContactTitle,
+  CustomForm,
+  CustomInput,
+  CustomInputLabel,
+  CustomTextArea,
+  LabelContainer,
+} from "./styles";
+import { SubmitButton } from "./SubmitButton";
 
 type ContactFormProps = {
   open: boolean;
@@ -29,6 +19,15 @@ type ContactFormProps = {
 
 export function ContactForm({ open, onClose }: ContactFormProps) {
   const modalRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [open]);
 
   useEffect(() => {
     function handleClickOutside(event: any) {
@@ -40,7 +39,7 @@ export function ContactForm({ open, onClose }: ContactFormProps) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [modalRef]);
+  }, [modalRef, onClose]);
 
   if (!open) {
     return <></>;
@@ -49,20 +48,26 @@ export function ContactForm({ open, onClose }: ContactFormProps) {
   return (
     <ContactFormContainer>
       <ContactFormModal ref={modalRef}>
+        <CloseButton onClose={onClose} />
         <ContactTitle>Contact</ContactTitle>
         <CustomForm>
-          <div>
+          <LabelContainer>
             <CustomInputLabel>Name</CustomInputLabel>
             <CustomInput placeholder="Fill your full name" />
-          </div>
-          <div>
+          </LabelContainer>
+          <LabelContainer>
             <CustomInputLabel>E-mail</CustomInputLabel>
             <CustomInput placeholder="Fill a valid e-mail" />
-          </div>
-          <div>
+          </LabelContainer>
+          <LabelContainer>
             <CustomInputLabel>Phone</CustomInputLabel>
             <CustomInput placeholder="Fill your phone" />
-          </div>
+          </LabelContainer>
+          <LabelContainer>
+            <CustomInputLabel>Post</CustomInputLabel>
+            <CustomTextArea placeholder="Hello..." rows={6} />
+          </LabelContainer>
+          <SubmitButton type="submit" />
         </CustomForm>
       </ContactFormModal>
     </ContactFormContainer>

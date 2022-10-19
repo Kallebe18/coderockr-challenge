@@ -1,9 +1,28 @@
-export function CloseButton() {
+import styled from "styled-components";
+
+const SubmitButtonContainer = styled.button`
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 8px;
+`;
+
+type CloseButtonProps = {
+  onClose: () => void;
+};
+
+export function CloseButton({ onClose }: CloseButtonProps) {
   return (
-    <button>
+    <SubmitButtonContainer onClick={onClose}>
       <svg
-        width="14"
-        height="14"
+        width="18"
+        height="18"
         viewBox="0 0 14 14"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -13,6 +32,6 @@ export function CloseButton() {
           fill="black"
         />
       </svg>
-    </button>
+    </SubmitButtonContainer>
   );
 }
