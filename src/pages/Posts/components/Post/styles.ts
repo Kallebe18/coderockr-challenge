@@ -4,7 +4,7 @@ export const PostContainer = styled.div`
   width: 75%;
   background-color: #fff;
   margin-top: 40px;
-  b-webkit-box-shadow: 5px 6px 10px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 5px 6px 10px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 5px 6px 10px 0px rgba(0, 0, 0, 0.1);
   margin-left: auto;
 
