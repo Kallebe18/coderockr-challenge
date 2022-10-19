@@ -1,24 +1,50 @@
 import styled from "styled-components";
 
 export const PostContainer = styled.div`
-  display: flex;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 440px;
   width: 75%;
-  margin-left: auto;
+  background-color: #fff;
+  margin-top: 40px;
   b-webkit-box-shadow: 5px 6px 10px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 5px 6px 10px 0px rgba(0, 0, 0, 0.1);
-  margin-top: 40px;
+  margin-left: auto;
 
   :not(:nth-child(3n)) {
     width: 50%;
-    max-height: 280px;
   }
 
   :nth-child(6n) {
     margin-left: 0;
   }
+
+  @media (min-width: 1024px) {
+    :nth-child(3n) {
+      img {
+        height: 400px;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    :nth-child(n) {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    img {
+      height: 200px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    img {
+      height: 160px;
+    }
+  }
+`;
+
+export const PostContent = styled.div`
+  display: flex;
 
   :nth-child(6n - 2) {
     flex-direction: row-reverse;
@@ -27,90 +53,76 @@ export const PostContainer = styled.div`
   :nth-child(6n - 1) {
     flex-direction: row-reverse;
   }
-
-  @media (max-width: 1200px) {
-    width: 100%;
-
-    :not(:nth-child(3n)) {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 800px) {
-    height: 240px;
-    width: 100%;
-  }
-
-  @media (max-width: 600px) {
-    height: 200px;
-  }
-
-  @media (max-width: 400px) {
-    height: 120px;
-  }
 `;
 
 export const PostTitle = styled.h1`
   color: #f1a10a;
-  font-size: 28px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 20px;
 
-  @media (max-width: 800px) {
-    font-size: 20px;
-  }
-
-  @media (max-width: 400px) {
-    font-size: 18px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  @media (max-width: 600px) {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* number of lines to show */
+  @media (max-width: 768px) {
+    -webkit-line-clamp: 2;
     line-clamp: 2;
-    -webkit-box-orient: vertical;
+  }
+`;
+
+export const MobileTitle = styled.h1`
+  color: #f1a10a;
+  padding: 8px;
+  text-align: center;
+  background-color: #fff;
+  border-bottom: 1px solid gray;
+
+  @media (min-width: 480px) {
+    display: none;
+  }
+`;
+
+export const DesktopWrapper = styled.div`
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
 export const PostImage = styled.img`
-  height: 100%;
+  object-fit: contain;
+  height: 15rem;
 `;
 
 export const PostInfoContainer = styled.div`
   position: relative;
-  width: 100%;
-  padding: 20px;
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  @media (max-width: 600px) {
-    padding: 10px;
-  }
-
-  @media (max-width: 400px) {
-    padding: 5px;
-  }
-`;
-
-export const PostAuthor = styled.p`
-  @media (max-width: 400px) {
-    font-size: 12px;
-  }
-`;
-
-export const PostArticle = styled.div`
+  width: 100%;
+  padding: 10px 20px;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* number of lines to show */
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
 
-  @media (max-width: 800px) {
-    display: none;
+  @media (max-width: 768px) {
+    padding: 0px 40px 0px 20px;
   }
+
+  @media (min-width: 1024px) {
+    padding: 0 40px;
+  }
+`;
+
+export const PostAuthor = styled.p``;
+
+export const PostArticle = styled.div`
+  display: -webkit-box;
+
+  margin-top: 20px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
 `;

@@ -5,9 +5,12 @@ import { usePost } from "../../../../hooks/usePost";
 import { PostType } from "../../../../types";
 import { PostButton } from "../PostButton";
 import {
+  DesktopWrapper,
+  MobileTitle,
   PostArticle,
   PostAuthor,
   PostContainer,
+  PostContent,
   PostImage,
   PostInfoContainer,
   PostTitle,
@@ -30,17 +33,22 @@ export function Post({ post }: PostProps) {
   const { article, author, imageUrl, title } = post;
   return (
     <PostContainer>
-      <PostImage src={imageUrl} alt={title} />
-      <PostInfoContainer>
-        <PostAuthor>{author}</PostAuthor>
-        <PostTitle>{title}</PostTitle>
-        <PostArticle>{article}</PostArticle>
-        <PostButton
-          onClick={() => {
-            setSelectedPost(post);
-          }}
-        />
-      </PostInfoContainer>
+      <MobileTitle>{title}</MobileTitle>
+      <PostContent>
+        <PostImage src={imageUrl} alt={title} />
+        <PostInfoContainer>
+          <PostAuthor>{author}</PostAuthor>
+          <DesktopWrapper>
+            <PostTitle>{title}</PostTitle>
+          </DesktopWrapper>
+          <PostArticle>{article}</PostArticle>
+          <PostButton
+            onClick={() => {
+              setSelectedPost(post);
+            }}
+          />
+        </PostInfoContainer>
+      </PostContent>
     </PostContainer>
   );
 }

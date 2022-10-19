@@ -8,8 +8,9 @@ const PostButtonContainer = styled.button`
   align-items: center;
   cursor: pointer;
   border: none;
-  margin-left: auto;
-  margin-top: auto;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
 `;
 
 type PostButtonProps = {
