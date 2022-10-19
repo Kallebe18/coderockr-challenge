@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Main third party libraries used in this project:
+
+- react
+- axios
+- date-fns
+- react-router-dom @v6
+- styled-components
+
 ## Available Scripts
 
 In the project directory, you can run:
