@@ -4,6 +4,7 @@ export const PostContainer = styled.div`
   width: 75%;
   background-color: #fff;
   margin-top: 40px;
+  overflow: hidden;
   -webkit-box-shadow: 5px 6px 10px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 5px 6px 10px 0px rgba(0, 0, 0, 0.1);
   margin-left: auto;
@@ -57,6 +58,7 @@ export const PostContent = styled.div`
 
 export const PostTitle = styled.h1`
   color: #f1a10a;
+  word-wrap: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
@@ -73,6 +75,7 @@ export const PostTitle = styled.h1`
 
 export const MobileTitle = styled.h1`
   color: #f1a10a;
+  word-wrap: break-word;
   padding: 8px;
   text-align: center;
   background-color: #fff;
